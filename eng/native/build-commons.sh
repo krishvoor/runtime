@@ -194,7 +194,7 @@ usage()
     echo ""
     echo "Common Options:"
     echo ""
-    echo "BuildArch can be: -arm, -armel, -arm64, x64, x86, -wasm"
+    echo "BuildArch can be: -arm, -armel, -arm64, x64, x86, -wasm, -ppc64el"
     echo "BuildType can be: -debug, -checked, -release"
     echo "-os: target OS (defaults to running OS)"
     echo "-bindir: output directory (defaults to $__ProjectRoot/artifacts)"
@@ -257,6 +257,10 @@ while :; do
         armel|-armel)
             __BuildArch=armel
             ;;
+	ppc64el)
+        __BuildArch=ppc64el
+        __HostArch=x64
+	   ;;
 
         bindir|-bindir)
             if [[ -n "$2" ]]; then
@@ -373,6 +377,9 @@ while :; do
         x64|-x64)
             __BuildArch=x64
             ;;
+	ppc64el|-ppc64el)
+            __BuildArch=ppc64el
+	    ;;
 
         wasm|-wasm)
             __BuildArch=wasm
